@@ -1,0 +1,23 @@
+<h1>Welcome to Github Viewer</h1>
+<div class="github-container">
+    <h2>Find anyone on github</h2>
+    <p>This simple Program aims to display relevant information from github's api </p>
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <input type="text" [(ngModel)]="username" name="github-username" value="Angular">
+    </form>
+    <br />
+    <div class="response-data" *ngIf="gh_data">
+        <strong>You searched for {{ username }} <a href="{{gh_data.html_url}}">Link to profile</a> </strong>
+        <img src="{{gh_data.avatar_url}}" />
+        <div class="repos">
+            <ul>
+                <li *ngFor="let repo of gh_repos">
+                    <strong>{{repo.name}}</strong> - {{repo.language}} - {{repo.url}}
+                </li>
+            </ul>
+        </div>
+
+        
+    </div>
+
+</div>
